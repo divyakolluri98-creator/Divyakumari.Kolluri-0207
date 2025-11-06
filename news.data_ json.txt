@@ -1,0 +1,23 @@
+{
+    "last_updated": "2025-11-04T11:28:00.000Z",
+    "articles": [
+        {
+            "title": "Major Flaw Discovered in Popular VPN Software, Immediate Patch Required",
+            "url": "https://example.com/vpn-flaw-news",
+            "source": "Security Weekly",
+            "published": "2025-11-04T10:30:00Z"
+        },
+        {
+            "title": "New 'GhostWriter' Malware Campaign Targeting Financial Institutions in APAC",
+            "url": "https://example.com/ghostwriter-malware",
+            "source": "Threat Intelligence Hub",
+            "published": "2025-11-04T09:45:00Z"
+        },
+        {
+            "title": "CISA Alert: Critical Vulnerability in Industrial Control Systems (ICS)",
+            "url": "https://cisa.gov/alerts/critical-ics-alert",
+            "source": "CISA",
+            "published": "2025-11-03T18:00:00Z"
+        }
+    ]
+}

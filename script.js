@@ -1,0 +1,45 @@
+// Function to fetch and display the news data
+function displayNews() {
+    fetch('./news_data.json')
+        .then(response => {
+            // Check if the response is successful (status 200)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const newsContainer = document.getElementById('news-feed');
+            
+            // Format the last updated time
+            const updateTime = new Date(data.last_updated).toLocaleTimeString('en-IN', {
+                hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short'
+            });
+            
+            let html = `<h2>Latest Cybersecurity News (Last updated: ${updateTime})</h2>`;
+
+            // Loop through articles and build the HTML structure
+            data.articles.forEach(article => {
+                const publishedDate = new Date(article.published).toLocaleDateString();
+                
+                html += `
+                    <div class="news-item">
+                        <h3><a href="${article.url}" target="_blank" rel="noopener noreferrer">${article.title}</a></h3>
+                        <p><strong>Source:</strong> ${article.source} | <strong>Date:</strong> ${publishedDate}</p>
+                    </div>
+                `;
+            });
+
+            newsContainer.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error fetching or processing news data:', error);
+            document.getElementById('news-feed').innerHTML = '<h2>Error Loading News</h2><p>Could not load news feed. Please check back later.</p>';
+        });
+}
+
+// Set the current year in the footer
+document.getElementById('current-year').textContent = new Date().getFullYear();
+
+// Run immediately on page load
+displayNews();
